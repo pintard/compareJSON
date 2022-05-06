@@ -2,6 +2,14 @@ const fs = require('fs')
 const path = require('path');
 
 /**
+ * Returns the largest length of two supplied objects
+ * @param {*} obj1 the first object length to compare
+ * @param {*} obj2 the second object length to compare
+ * @returns the max object length
+ */
+module.exports.maxObjectLength = (obj1, obj2) => Math.max(Object.keys(obj1).length, Object.keys(obj2).length)
+
+/**
  * Performs a deep equality of two objects, returning true if identical
  * @param {*} x the first object to be compared
  * @param {*} y the second object to be compared
@@ -32,8 +40,8 @@ module.exports.analyzeDirectory = function (directoryPath) {
         for (let i = 0; i < keys.length; i++) {
             for (let j = i; j < keys.length; j++) {
                 const score = compare(fileObjectMap[keys[i]], fileObjectMap[keys[j]])
-                const fileNames = `${keys[i]}-${keys[j]}`
-                console.log(`${fileNames}: ${score}`)
+                const fileNames = `[${keys[i]}]\tAND [${keys[j]}]`
+                if (i !== j) console.log(`${fileNames}: ${score}`)
             }
         }
     })

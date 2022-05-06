@@ -12,4 +12,6 @@ if (process.argv.length === 4) {
 } else if (process.argv.length === 3) {
     /** Compare all the files in a directory */
     analyzeDirectory(process.argv[2])
-} else console.log('Error: requires two arguments')
+} else console.log('Error: requires at least one argument.'
+    + '\n\tmain.js[directory name]- directory analysis'
+    + '\n\tmain.js[file path1][file path2] - file comparison')
