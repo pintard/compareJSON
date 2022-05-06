@@ -16,8 +16,8 @@ A reasonable assumption is that any array/subarrays comparison could be contrast
 
 Clone this repository, navigate to project directory and execute command `npm i`
 
-To run this program use the command `node main.js path1 path2` where path1/2 are the JSON file directory paths. Sample files already exist in this repository under the `quiq_sample_json_files` directory.
+To run the program use the command `node main.js path1 path2` where path1 and 2 are the JSON file directory paths anywhere in your file system. Sample files already exist in this repository under the `./quiq_sample_json_files` directory.
 
 i.e. `node main.js quiq_sample_json_files/BreweriesMaster.json quiq_sample_json_files/BreweriesSample2.json`
 
-To perform an analysis of all files in a directory, use the command `node main.js directoryPath`
+To perform an analysis of all files in a directory, use the command `node main.js directoryPath` or `node main.js quiq_sample_json_files`

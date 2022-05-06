@@ -7,7 +7,7 @@ const path = require('path');
  * @param {*} obj2 the second object length to compare
  * @returns the max object length
  */
-module.exports.maxObjectLength = (obj1, obj2) => Math.max(Object.keys(obj1).length, Object.keys(obj2).length)
+module.exports.maxObjectLength = (x, y) => Math.max(Object.keys(x).length, Object.keys(y).length)
 
 /**
  * Performs a deep equality of two objects, returning true if identical
@@ -26,7 +26,7 @@ module.exports.equals = function equals(x, y) {
  * Performs a similarity score on all permutations of files in a specified directory
  * @param {*} directoryPath the path of the directory to be analyzed
  */
-module.exports.analyzeDirectory = function (directoryPath) {
+module.exports.directoryCompare = function (directoryPath) {
     const compare = require('./compare')
 
     fs.readdir(directoryPath, (error, files) => {
