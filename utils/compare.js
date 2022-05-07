@@ -6,10 +6,10 @@ const { equals, maxObjectLength: max } = require('./helper')
  *
  * @param {Object} obj1 the first object to be compared
  * @param {Object} obj2 the second object to be compared
- * @param {boolean} log optional to display log information
- * @return {number} the floating point GRADE of similarities between the given objects
+ * @param {boolean} shouldLog optional to display log information
+ * @return {number} the floating point score of similarities between the given objects
  */
-module.exports = function (obj1, obj2, log = false) {
+module.exports = function (obj1, obj2, shouldLog = false) {
     if (!obj1 || !obj2) return 0
     if (equals(obj1, obj2)) return 1.0
     else {
@@ -19,7 +19,7 @@ module.exports = function (obj1, obj2, log = false) {
         const calcScore = (x, y, oldTotal, points = 1) => {
             if (typeof x !== 'object') {
                 if (x === y) {
-                    log && console.log(`✅ [${points.toFixed(4)} points]: ${x}`)
+                    shouldLog && console.log(`✅ [${points.toFixed(4)} points]: ${x}`)
                     score += points
                 }
             } else {
@@ -32,7 +32,7 @@ module.exports = function (obj1, obj2, log = false) {
         for (const key in obj1) calcScore(obj1[key], obj2[key], total)
 
         const GRADE = score / total
-        log && console.log(`[${score} of ${total}] =>`, GRADE)
+        shouldLog && console.log(`[${score} of ${total}] =>`, GRADE)
         return GRADE
     }
 }

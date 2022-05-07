@@ -54,7 +54,6 @@ module.exports.directoryCompare = function (directoryPath) {
  */
 module.exports.fileCompare = function (path1, path2) {
     const compare = require('./compare')
-    const fs = require('fs')
 
     if (path1.includes('.json') && path2.includes('.json')) {
         try {
