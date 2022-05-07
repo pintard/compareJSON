@@ -19,7 +19,7 @@ module.exports = function (obj1, obj2, log = false) {
         const calcScore = (x, y, oldTotal, points = 1) => {
             if (typeof x !== 'object') {
                 if (x === y) {
-                    if (log) console.log(`points: ${points.toFixed(4)}\t✅ ${x}`)
+                    log && console.log(`✅ [${points.toFixed(4)} points]: ${x}`)
                     score += points
                 }
             } else {
@@ -32,7 +32,7 @@ module.exports = function (obj1, obj2, log = false) {
         for (const key in obj1) calcScore(obj1[key], obj2[key], total)
 
         const GRADE = score / total
-        if (log) console.log(`score: [${score} of ${total}] =>`, GRADE)
+        log && console.log(`[${score} of ${total}] =>`, GRADE)
         return GRADE
     }
 }

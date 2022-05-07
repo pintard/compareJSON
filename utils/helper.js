@@ -46,3 +46,21 @@ module.exports.directoryCompare = function (directoryPath) {
         }
     })
 }
+
+/**
+ * Compares two files supplied by the file paths
+ * @param {*} path1 the file path of the first file to compare
+ * @param {*} path2 the file path of the second file to compare
+ */
+module.exports.fileCompare = function (path1, path2) {
+    const compare = require('./compare')
+    const fs = require('fs')
+
+    if (path1.includes('.json') && path2.includes('.json')) {
+        try {
+            const data1 = JSON.parse(fs.readFileSync(path1))
+            const data2 = JSON.parse(fs.readFileSync(path2))
+            console.log(compare(data1, data2))
+        } catch (error) { console.error('File not found:', error.path) }
+    } else console.error('Must supply two json file paths')
+}
